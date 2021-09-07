@@ -1,6 +1,7 @@
 import React from 'react'
 import {View, StyleSheet, Text, TouchableOpacity, Dimensions, SafeAreaView, FlatList} from 'react-native'
 import * as Color from '../../global/Color'
+import PlayerItemComponent from '../components/PlayerItemComponent'
 
 class GameScreen extends React.Component {
 
@@ -14,13 +15,13 @@ class GameScreen extends React.Component {
 
 
     componentDidMount() {
-        this.initializePlayersArray()
+        this.addNewPlayer()
     }
 
-    initializePlayersArray = () => {
-        // Get player one data set
+    addNewPlayer = () => {
+        // get player initial data
         let player = {
-            id: 0,
+            id: this.state.players.length,
             name: '',
             score: 0,
             status: false,
@@ -28,9 +29,9 @@ class GameScreen extends React.Component {
         }
         
         // Set players array with new player
-        let tempPlayers = []
+        let tempPlayers = this.state.players
         tempPlayers.push(player)
-        this.setState({players: tempPlayers})
+        this.setState({players: tempPlayers}, () => console.log(this.state.players))
     }
 
 
@@ -40,8 +41,8 @@ class GameScreen extends React.Component {
                 <SafeAreaView>
                     <FlatList
                     data={this.state.players}
-                    renderItem={({item}) => (
-                        <Text>Hello</Text>
+                    renderItem={({item, index}) => (
+                        <PlayerItemComponent player={item} index={index} lastIndex={this.state.players.length - 1} addNewPlayer={this.addNewPlayer}/>
                     )}
                     keyExtractor={item => item.id.toString()}
                     style={styles.list} />
