@@ -1,0 +1,1 @@
+export const MAIN_GREEN = '#3a5924';
