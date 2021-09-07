@@ -52,7 +52,6 @@ class GameScreen extends React.Component {
     }
     
 }
-
 const styles = StyleSheet.create({
     background: {
         backgroundColor: Color.MAIN_GREEN,
