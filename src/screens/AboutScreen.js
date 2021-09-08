@@ -41,13 +41,13 @@ const styles = StyleSheet.create({
         lineHeight: Dimensions.get('window').height * .08,
         textAlign: 'center',
         fontSize: Dimensions.get('window').height * .05,
-        color: Color.MAIN_GREEN
+        color: Color.MAIN
     },
     version: {
         marginTop: Dimensions.get('window').height * .005,
         textAlign: 'center',
         fontSize: Dimensions.get('window').height * .03,
-        color: Color.MAIN_GREEN,
+        color: Color.MAIN,
         marginBottom: Dimensions.get('window').height * .05,
     },
     p: {
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
         marginBottom: Dimensions.get('window').height * .04,
         textAlign: 'justify',
         fontSize: Dimensions.get('window').height * .025,
-        color: Color.MAIN_GREEN
+        color: Color.MAIN
     },
     
 })

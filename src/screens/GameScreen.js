@@ -1,6 +1,7 @@
 import React from 'react'
 import {View, StyleSheet, Text, TouchableOpacity, Dimensions, SafeAreaView, FlatList} from 'react-native'
 import * as Color from '../../global/Color'
+import GameHeaderComponent from '../components/GameHeaderComponent'
 import PlayerItemComponent from '../components/PlayerItemComponent'
 
 class GameScreen extends React.Component {
@@ -31,18 +32,25 @@ class GameScreen extends React.Component {
         // Set players array with new player
         let tempPlayers = this.state.players
         tempPlayers.push(player)
-        this.setState({players: tempPlayers}, () => console.log(this.state.players))
+        this.setState({players: tempPlayers})
+    }
+
+    setName = (text, index) => {
+        let tempPlayers = this.state.players
+        tempPlayers[index].name = text
+        this.setState({players: tempPlayers})
     }
 
 
     render() {
         return (
             <View style={styles.background}>
-                <SafeAreaView>
+                <SafeAreaView style={styles.sv}>
+                    <GameHeaderComponent />
                     <FlatList
                     data={this.state.players}
                     renderItem={({item, index}) => (
-                        <PlayerItemComponent player={item} index={index} lastIndex={this.state.players.length - 1} addNewPlayer={this.addNewPlayer}/>
+                        <PlayerItemComponent player={item} index={index} lastIndex={this.state.players.length - 1} addNewPlayer={this.addNewPlayer} setName={this.setName} />
                     )}
                     keyExtractor={item => item.id.toString()}
                     style={styles.list} />
@@ -55,14 +63,15 @@ class GameScreen extends React.Component {
 }
 const styles = StyleSheet.create({
     background: {
-        backgroundColor: Color.MAIN_GREEN,
-        height: Dimensions.get('window').height
+        backgroundColor: Color.MAIN,
+        height: '100%',
     },
     list: {
-        height: Dimensions.get('window').height * .6,
-        borderBottomWidth: 3,
-        borderColor: 'rgba(255, 255, 255, 0.5)',
+        height: '100%',
     },
+    sv: {
+        marginBottom: Dimensions.get('window').height * .1,
+    }
 })
 
 export default GameScreen

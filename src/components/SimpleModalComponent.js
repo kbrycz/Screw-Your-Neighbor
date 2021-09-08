@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
     marginTop: Dimensions.get('window').height * .02,
   },
   buttonClose: {
-    backgroundColor: Color.MAIN_GREEN,
+    backgroundColor: Color.MAIN,
     paddingTop: Dimensions.get('window').width * .015,
     paddingBottom: Dimensions.get('window').width * .015
   },

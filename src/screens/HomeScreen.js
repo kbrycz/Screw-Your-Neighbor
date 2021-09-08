@@ -70,7 +70,7 @@ class HomeScreen extends React.Component {
 
 const styles = StyleSheet.create({
     background: {
-        backgroundColor: Color.MAIN_GREEN,
+        backgroundColor: Color.MAIN,
         height: Dimensions.get('window').height
     },
     headerText: {
@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
     buttonText: {
         fontSize: Dimensions.get('window').height * .035,
         textAlign: 'center',
-        color: Color.MAIN_GREEN,
+        color: Color.MAIN,
     },
     button: {
         width: Dimensions.get('window').width * .7,
@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
         paddingVertical: Dimensions.get('window').width * .03,
         paddingHorizontal: Dimensions.get('window').width * .07,
         borderWidth: 4,
-        borderColor: Color.MAIN_GREEN,
+        borderColor: Color.MAIN,
         borderRadius: 20,
     },
     iconView: {
