@@ -9,6 +9,7 @@ import HistoryScreen from './src/screens/HistoryScreen'
 import HistoryPlayerScreen from './src/screens/HistoryPlayerScreen'
 import * as Font from 'expo-font';
 import { Asset } from 'expo-asset';
+import HowToScreen from './src/screens/HowToScreen';
 
 
 // Creates stack for the Home screens
@@ -23,6 +24,7 @@ const HomeStack = () => {
         }}>
         <Home.Screen name="Main" component={HomeScreen} />
         <Home.Screen name="About" component={AboutScreen} />
+        <Home.Screen name="How" component={HowToScreen} />
     </Home.Navigator>
   )
 }
@@ -79,9 +81,9 @@ class App extends React.Component {
     // ]);
 
     // Loads all the fonts
-    // await Font.loadAsync({
-    //   PatrickHand: require('./assets/fonts/PatrickHand-Regular.ttf')
-    // });
+    await Font.loadAsync({
+      BalsamiqSans: require('./assets/fonts/BalsamiqSans-Regular.ttf')
+    });
 
     // Sets loading to false, indicating all of the loading is done and we can show the screens
     this.setState({ 

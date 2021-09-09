@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Alert, Modal, StyleSheet, Text, Pressable, View, Dimensions, ScrollView } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 import * as Color from '../../global/Color'
 
 const SimpleModalComponent = ({modalVisible, setModalVisible, text, buttonText}) => {
@@ -16,12 +17,12 @@ const SimpleModalComponent = ({modalVisible, setModalVisible, text, buttonText})
             <View style={styles.centeredView}>
             <View style={styles.modalView}>
                 <Text style={styles.modalText}>{text}</Text>
-                <Pressable
+                <TouchableOpacity
                 style={[styles.button, styles.buttonClose]}
                 onPress={() => setModalVisible(!modalVisible)}
                 >
                     <Text style={styles.textStyle}>{buttonText}</Text>
-                </Pressable>
+                </TouchableOpacity>
             </View>
             </View>
         </Modal>
@@ -55,30 +56,26 @@ const styles = StyleSheet.create({
   },
   button: {
     borderRadius: 20,
-    paddingBottom: Dimensions.get('window').width * .01,
-    paddingLeft: Dimensions.get('window').width * .08,
-    paddingRight: Dimensions.get('window').width * .08,
+    width: Dimensions.get('window').width * .4,
+    paddingVertical: Dimensions.get('window').height * .01,
+    paddingHorizontal: Dimensions.get('window').width * .1,
     elevation: 2,
     marginTop: Dimensions.get('window').height * .02,
-  },
-  buttonClose: {
     backgroundColor: Color.MAIN,
-    paddingTop: Dimensions.get('window').width * .015,
-    paddingBottom: Dimensions.get('window').width * .015
   },
   textStyle: {
     color: "#fff",
     textAlign: "center",
-    fontFamily: 'PatrickHand',
-    fontSize: Dimensions.get('window').height * .03,
+    fontSize: Dimensions.get('window').height * .025,
+    fontFamily: 'BalsamiqSans'
   },
   modalText: {
     textAlign: 'center',
     color: Color.TEXT,
-    fontSize: Dimensions.get('window').height * .03,
+    fontSize: Dimensions.get('window').height * .027,
     lineHeight: Dimensions.get('window').height * .045,
-    fontFamily: 'PatrickHand',
     marginBottom: Dimensions.get('window').height * .015,
+    fontFamily: 'BalsamiqSans'
   }
 });
 

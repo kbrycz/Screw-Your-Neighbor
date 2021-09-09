@@ -1,17 +1,16 @@
 *****************TODO******************
-- Make the text input shrink as text grows
-- Math button functionality
-- Create Restart modal - three buttons
-- Change color of box when the players score had been updated
+- Start designing home screen
+- Add designs to all of the other screens
 
-
+- Set up how to play screen
 *****************LATER******************
-- Create next round functionality, update rounds after clicking button
-- Save the rounds in history when button is clicked
-- Create a list on the history screen of all the players in the game
-    - Have a carrot on the side for users to click and go to different screen on stack
-- Have a list of all players history throughout the game 
+- Keyboard slide up when clicking name
 
+
+
+
+
+- Create splash screen and icon
 
 
 
@@ -19,7 +18,7 @@
 
 *****************REACH******************
 - Be able to edit history with a button
-
+- Make the text input shrink as text grows
 
 
 

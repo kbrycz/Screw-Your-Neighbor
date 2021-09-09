@@ -3,7 +3,7 @@ import {View, StyleSheet, Text, TouchableOpacity, Dimensions, TextInput, Keyboar
 import * as Color from '../../global/Color'
 
 
-const PlayerItemComponent = ({player, index, addNewPlayer, lastIndex, setName, scoreChange}) => {
+const PlayerItemComponent = ({player, index, addNewPlayer, lastIndex, setName, scoreChange, round}) => {
 
     // Gets the correct container color for even / odd
     const containerStyle = (val) => {
@@ -19,8 +19,16 @@ const PlayerItemComponent = ({player, index, addNewPlayer, lastIndex, setName, s
         }
     }
 
+    const isDone = () => {
+        if (player.status) {
+            return {
+                backgroundColor: Color.DONE
+            }
+        }
+    }
+
     const renderTextInput = () => {
-        return <View style={styles.nameContainer}>
+        return <View style={[styles.nameContainer, isDone()]}>
                     <TextInput
                     maxLength={12}
                     onSubmitEditing={() => { Keyboard.dismiss() }}
@@ -31,7 +39,7 @@ const PlayerItemComponent = ({player, index, addNewPlayer, lastIndex, setName, s
                     style={styles.textInput}
                     returnKeyType="done"
                     value={player.name}
-                    placeholder='Name'
+                    placeholder={"Player " + (index + 1)}
                     placeholderTextColor="rgba(255,255,255,0.2)" 
                     onChangeText={(text) => setName(text, index)} />
                     
@@ -80,12 +88,16 @@ const PlayerItemComponent = ({player, index, addNewPlayer, lastIndex, setName, s
                         {renderTextInput()}
                         {renderScoreBox()}
                     </View>
-                    
-                    <TouchableOpacity onPress={addNewPlayer}>
-                        <View style={styles.addPlayerButtonContainer}>
-                            <Text style={styles.addPlayerButton}>Add player</Text>
-                        </View>
-                    </TouchableOpacity>
+                    {
+                        round === 1
+                        ? <TouchableOpacity onPress={addNewPlayer}>
+                                <View style={styles.addPlayerButtonContainer}>
+                                    <Text style={styles.addPlayerButton}>+ Add player</Text>
+                                </View>
+                          </TouchableOpacity>
+                        : null
+                    }
+
             </>
         }
     }
@@ -99,9 +111,7 @@ const PlayerItemComponent = ({player, index, addNewPlayer, lastIndex, setName, s
 }
 
 const styles = StyleSheet.create({
-    container: {
-        paddingTop:  Dimensions.get('window').height * .01,
-    }, 
+
     nameContainer: {
         flexDirection: 'row',
         paddingVertical: Dimensions.get('window').height * .04,
@@ -116,7 +126,8 @@ const styles = StyleSheet.create({
         color: '#fff',
         textTransform: 'capitalize',
         fontSize: Dimensions.get('window').height * .025,
-        textAlign: 'center'
+        textAlign: 'center',
+        fontFamily: 'BalsamiqSans'
     },
     textInput: {
         color: '#fff',
@@ -125,16 +136,18 @@ const styles = StyleSheet.create({
         flex: 1,
         marginLeft: Dimensions.get('window').width * .02,
         fontSize: Dimensions.get('window').height * .03,
+        fontFamily: 'BalsamiqSans'
     },
     box: {
         flex: 1,
         flexDirection: 'column',
     },
     score: {
-        fontSize: Dimensions.get('window').height * .04,
+        fontSize: Dimensions.get('window').height * .06,
         flex: 1,
         textAlign: 'center',
-        color: '#fff'
+        color: '#fff',
+        fontFamily: 'BalsamiqSans'
     },
     buttonContainer: {
         flex: 1,
@@ -142,18 +155,20 @@ const styles = StyleSheet.create({
     },
     math: {
         padding: Dimensions.get('window').height * .003,
-        fontSize: Dimensions.get('window').height * .025,
+        fontSize: Dimensions.get('window').height * .02,
         textAlign: 'center',
         color: '#fff',
+        fontFamily: 'BalsamiqSans'
     },
     zero: {
         padding: Dimensions.get('window').height * .01,
-        fontSize: Dimensions.get('window').height * .025,
+        fontSize: Dimensions.get('window').height * .015,
         textAlign: 'center',
         textTransform: 'uppercase',
         textAlign: 'center',
         color: '#fff',
-        backgroundColor: Color.zero
+        backgroundColor: Color.zero,
+        fontFamily: 'BalsamiqSans'
     },
     plus1: {
         backgroundColor: Color.plus1,

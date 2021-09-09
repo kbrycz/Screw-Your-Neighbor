@@ -10,3 +10,9 @@ export const plus10 = '#6e9dc4'
 export const minus1 = '#6295c0'
 export const minus10 = '#568dbb'
 export const zero = '#4a85b6'
+
+export const DONE = '#1e3549'
+
+export const right = "#b7cee2"
+export const wrong = "#1e3549"
+export const screwed = "#b7cee2"

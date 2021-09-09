@@ -48,6 +48,9 @@ class HomeScreen extends React.Component {
                 <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('Game')}>
                     <Text style={styles.buttonText}>Play</Text>
                 </TouchableOpacity>
+                <TouchableOpacity style={styles.howToPlay} onPress={() => this.props.navigation.navigate('How')}>
+                    <Text style={styles.howToPlayText}>How to Play</Text>
+                </TouchableOpacity>
                 <View style={styles.iconView}>
                     <TouchableOpacity onPress={this.shareButton}>
                         <Feather name="share-2" style={styles.icon} />
@@ -82,27 +85,46 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         marginBottom: Dimensions.get('window').height * .04,
         color: '#fff',
-        opacity: .8
+        opacity: .8,
+        fontFamily: 'BalsamiqSans'
     },
     buttonText: {
         fontSize: Dimensions.get('window').height * .035,
         textAlign: 'center',
         color: Color.MAIN,
+        fontFamily: 'BalsamiqSans'
     },
     button: {
         width: Dimensions.get('window').width * .7,
         marginLeft: Dimensions.get('window').width * .15,
         marginRight: Dimensions.get('window').width * .15,
         backgroundColor: '#fff',
-        marginTop: Dimensions.get('window').height * .3,
+        marginTop: Dimensions.get('window').height * .25,
         paddingVertical: Dimensions.get('window').width * .03,
         paddingHorizontal: Dimensions.get('window').width * .07,
         borderWidth: 4,
         borderColor: Color.MAIN,
         borderRadius: 20,
     },
+    howToPlayText: {
+        fontSize: Dimensions.get('window').height * .027,
+        textAlign: 'center',
+        color: '#fff',
+        fontFamily: 'BalsamiqSans'
+    },
+    howToPlay: {
+        width: Dimensions.get('window').width * .7,
+        marginLeft: Dimensions.get('window').width * .15,
+        marginRight: Dimensions.get('window').width * .15,
+        marginTop: Dimensions.get('window').height * .02,
+        paddingVertical: Dimensions.get('window').width * .015,
+        paddingHorizontal: Dimensions.get('window').width * .07,
+        borderWidth: 3,
+        borderColor: '#fff',
+        borderRadius: 15,
+    },
     iconView: {
-        marginTop: Dimensions.get('window').height * .04,
+        marginTop: Dimensions.get('window').height * .06,
         flexDirection: 'row',
         justifyContent: 'center'
     },
