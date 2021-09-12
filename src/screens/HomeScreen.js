@@ -1,8 +1,9 @@
 import React from 'react'
-import {View, StyleSheet, Text, Dimensions, TouchableOpacity, Share, Linking} from 'react-native'
+import {View, StyleSheet, Text, Dimensions, TouchableOpacity, Share, Linking, Image} from 'react-native'
 import * as Color from '../../global/Color'
 import { Feather } from '@expo/vector-icons'; 
 import SimpleModalComponent from '../components/SimpleModalComponent'
+import CircleComponent from '../components/CircleComponent';
 
 class HomeScreen extends React.Component {
 
@@ -44,7 +45,15 @@ class HomeScreen extends React.Component {
     render() {
         return (
             <View style={styles.background}>
+                <CircleComponent isWhite={false} />
+
                 <Text style={styles.headerText}>Screw Your Neighbor</Text>
+                <View style={styles.imageContainer}>
+                    <Image
+                        style={styles.image} 
+                        source={require('../../assets/main.png')}
+                        />
+                </View>
                 <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('Game')}>
                     <Text style={styles.buttonText}>Play</Text>
                 </TouchableOpacity>
@@ -77,16 +86,22 @@ const styles = StyleSheet.create({
         height: Dimensions.get('window').height
     },
     headerText: {
-        marginTop: Dimensions.get('window').height * .2,
+        marginTop: Dimensions.get('window').height * .15,
         marginLeft: Dimensions.get('window').width * .05,
         marginRight: Dimensions.get('window').width * .05,
         lineHeight: Dimensions.get('window').height * .08,
         fontSize: Dimensions.get('window').height * .06,
         textAlign: 'center',
-        marginBottom: Dimensions.get('window').height * .04,
         color: '#fff',
         opacity: .8,
         fontFamily: 'BalsamiqSans'
+    },
+    image: {
+        height: Dimensions.get('window').height * .25,
+        width: Dimensions.get('window').width * .5,
+        marginHorizontal: Dimensions.get('window').width * .25,
+        marginVertical: Dimensions.get('window').height * .07,
+        resizeMode: 'contain'
     },
     buttonText: {
         fontSize: Dimensions.get('window').height * .035,
@@ -99,7 +114,6 @@ const styles = StyleSheet.create({
         marginLeft: Dimensions.get('window').width * .15,
         marginRight: Dimensions.get('window').width * .15,
         backgroundColor: '#fff',
-        marginTop: Dimensions.get('window').height * .25,
         paddingVertical: Dimensions.get('window').width * .03,
         paddingHorizontal: Dimensions.get('window').width * .07,
         borderWidth: 4,
@@ -124,14 +138,14 @@ const styles = StyleSheet.create({
         borderRadius: 15,
     },
     iconView: {
-        marginTop: Dimensions.get('window').height * .06,
+        marginTop: Dimensions.get('window').height * .04,
         flexDirection: 'row',
         justifyContent: 'center'
     },
     icon: {
         color: '#fff',
         marginHorizontal: Dimensions.get('window').width * .04,
-        fontSize: Dimensions.get('window').width * .08,
+        fontSize: Dimensions.get('window').height * .03,
     },
 })
 

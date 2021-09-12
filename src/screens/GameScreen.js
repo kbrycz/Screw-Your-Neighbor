@@ -1,6 +1,7 @@
 import React from 'react'
-import {View, StyleSheet, Text, TouchableOpacity, Dimensions, SafeAreaView, FlatList} from 'react-native'
+import {View, StyleSheet, Text, TouchableOpacity, Dimensions, SafeAreaView, KeyboardAvoidingView, ScrollView} from 'react-native'
 import * as Color from '../../global/Color'
+import CircleComponent from '../components/CircleComponent'
 import GameHeaderComponent from '../components/GameHeaderComponent'
 import PlayerItemComponent from '../components/PlayerItemComponent'
 import SimpleModalComponent from '../components/SimpleModalComponent'
@@ -116,19 +117,21 @@ class GameScreen extends React.Component {
     }
 
 
+
     render() {
         return (
             <View style={styles.background}>
+                <CircleComponent isWhite={false} />
                 <SafeAreaView style={styles.sv}>
                     <GameHeaderComponent quit={this.quit} restart={this.restart} round={this.state.round} next={this.next} goToHistory={this.goToHistory} />
-                    <FlatList
-                    data={this.state.players}
-                    renderItem={({item, index}) => (
-                        <PlayerItemComponent player={item} index={index} lastIndex={this.state.players.length - 1} round={this.state.round}
-                                             addNewPlayer={this.addNewPlayer} setName={this.setName} scoreChange={this.scoreChange}/>
-                    )}
-                    keyExtractor={item => item.id.toString()}
-                    style={styles.list} />
+                    <KeyboardAvoidingView  behavior="padding" enabled keyboardVerticalOffset={20} style={{height: Dimensions.get('window').height}}>
+                    <ScrollView>
+                        {this.state.players.map((player, index) => {
+                            return <PlayerItemComponent key={index} player={player} index={index} lastIndex={this.state.players.length - 1} round={this.state.round}
+                                addNewPlayer={this.addNewPlayer} setName={this.setName} scoreChange={this.scoreChange}/>
+                        })}
+                    </ScrollView>
+                    </KeyboardAvoidingView>
                     <SimpleModalComponent modalVisible={this.state.modalVisible} 
                                       setModalVisible={this.setModalVisible} 
                                       text={"Make sure every player has an updated score!"} buttonText={'OK'} />
@@ -148,7 +151,7 @@ const styles = StyleSheet.create({
         height: '100%',
     },
     sv: {
-        marginBottom: Dimensions.get('window').height * .1,
+        marginBottom: Dimensions.get('window').height * .15,
     }
 })
 

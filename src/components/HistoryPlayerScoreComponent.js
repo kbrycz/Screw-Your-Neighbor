@@ -9,11 +9,13 @@ const HistoryPlayerScoreComponent = ({score, round, prev, index}) => {
         // Even number
         if (index % 2 == 0) {
             return {
-                backgroundColor: Color.ODD
+                backgroundColor: Color.ODD,
+                opacity: .8
             }
         } else {
             return {
-                backgroundColor: Color.EVEN
+                backgroundColor: Color.EVEN,
+                opacity: .8
             }
         }
     }

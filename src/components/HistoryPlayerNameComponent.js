@@ -10,11 +10,13 @@ const HistoryPlayerNameComponent = ({player, index, navigation}) => {
         // Even number
         if (val % 2 == 0) {
             return {
-                backgroundColor: Color.ODD
+                backgroundColor: Color.ODD,
+                opacity: .8
             }
         } else {
             return {
-                backgroundColor: Color.EVEN
+                backgroundColor: Color.EVEN,
+                opacity: .8
             }
         }
     }

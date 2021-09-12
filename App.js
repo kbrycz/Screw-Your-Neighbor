@@ -77,8 +77,11 @@ class App extends React.Component {
   async loadEverything() {
 
     // Loads all the images
-    // await Asset.loadAsync([
-    // ]);
+    await Asset.loadAsync([
+      require('./assets/circle.png'),
+      require('./assets/main.png'),
+      require('./assets/neighborIcon.png')
+    ]);
 
     // Loads all the fonts
     await Font.loadAsync({

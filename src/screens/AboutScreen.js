@@ -1,6 +1,7 @@
 import React from 'react'
 import {View, StyleSheet, Text, TouchableOpacity, Dimensions} from 'react-native'
 import * as Color from '../../global/Color'
+import CircleComponent from '../components/CircleComponent'
 
 class AboutScreen extends React.Component {
 
@@ -19,6 +20,7 @@ class AboutScreen extends React.Component {
     render() {
         return (
             <View>
+                <CircleComponent isWhite={true}/>
                 <Text style={styles.headerText}>About</Text>
                 <Text style={styles.version}>1.0.0</Text>
                 <Text style={styles.p}>Alligator Games LLC is a Chicago based company specializing in party games. Our mission

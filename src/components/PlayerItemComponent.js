@@ -10,11 +10,13 @@ const PlayerItemComponent = ({player, index, addNewPlayer, lastIndex, setName, s
         // Even number
         if (val % 2 == 0) {
             return {
-                backgroundColor: Color.MAIN
+                backgroundColor: Color.MAIN,
+                opacity: .8
             }
         } else {
             return {
-                backgroundColor: Color.MAIN
+                backgroundColor: Color.MAIN,
+                opacity: .8
             }
         }
     }
@@ -22,7 +24,8 @@ const PlayerItemComponent = ({player, index, addNewPlayer, lastIndex, setName, s
     const isDone = () => {
         if (player.status) {
             return {
-                backgroundColor: Color.DONE
+                backgroundColor: Color.DONE,
+                opacity: .8
             }
         }
     }
@@ -32,9 +35,8 @@ const PlayerItemComponent = ({player, index, addNewPlayer, lastIndex, setName, s
                     <TextInput
                     maxLength={12}
                     onSubmitEditing={() => { Keyboard.dismiss() }}
-                    autoCompleteType="name"
+                    autoCompleteType="off"
                     keyboardType="default"
-                    textContentType='givenName'
                     autoCorrect={false}
                     style={styles.textInput}
                     returnKeyType="done"

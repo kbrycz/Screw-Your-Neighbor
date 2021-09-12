@@ -1,19 +1,7 @@
 *****************TODO******************
-- Start designing home screen
-- Add designs to all of the other screens
+- Be able to remove player
 
-- Set up how to play screen
 *****************LATER******************
-- Keyboard slide up when clicking name
-
-
-
-
-
-- Create splash screen and icon
-
-
-
 
 
 *****************REACH******************
