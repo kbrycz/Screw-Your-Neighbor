@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { Alert, Modal, StyleSheet, Text, Pressable, View, Dimensions, ScrollView } from "react-native";
-import { TouchableOpacity } from "react-native-gesture-handler";
+import { Alert, Modal, StyleSheet, Text, Pressable, View, Dimensions, TouchableOpacity } from "react-native";
 import * as Color from '../../global/Color'
 
 const SimpleModalComponent = ({modalVisible, setModalVisible, text, buttonText}) => {

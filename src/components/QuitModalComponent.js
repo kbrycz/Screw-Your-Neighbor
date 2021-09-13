@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { Alert, Modal, StyleSheet, Text, View, Dimensions, ScrollView } from "react-native";
-import { TouchableOpacity } from "react-native-gesture-handler";
+import { Alert, Modal, StyleSheet, Text, View, Dimensions, TouchableOpacity } from "react-native";
 import * as Color from '../../global/Color'
 
 const QuitModalComponent = ({modalVisible, setModalVisible, restart, quit}) => {

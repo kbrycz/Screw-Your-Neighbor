@@ -100,7 +100,9 @@ class GameScreen extends React.Component {
                 round: this.state.round,
                 prev: tempPlayers[i].history[this.state.round - 1].score,
             }
-            tempPlayers[i].history.push(historyRound)
+            if (tempPlayers[i].history.length < this.state.round + 1) { 
+                tempPlayers[i].history.push(historyRound)
+            }
         }
 
         // Another run through to make sure all of the statuses are updated
