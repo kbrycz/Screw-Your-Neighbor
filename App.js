@@ -130,7 +130,7 @@ class App extends React.Component {
 }
 
 const styles = StyleSheet.create({
-    background: {
+  background: {
       backgroundColor: Color.MAIN,
       height: Dimensions.get('window').height
   },
