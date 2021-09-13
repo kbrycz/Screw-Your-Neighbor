@@ -5,6 +5,7 @@ import * as Color from '../../global/Color'
 
 const QuitModalComponent = ({modalVisible, setModalVisible, restart, quit}) => {
 
+    // Restarts the game and gets rid of pop up
     const restartFirst = () => {
         restart()
         setModalVisible(false)

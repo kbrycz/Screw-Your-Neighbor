@@ -1,9 +1,19 @@
 import React from 'react'
 import {View, StyleSheet, Text, TouchableOpacity, Dimensions, TextInput, Keyboard} from 'react-native'
 import * as Color from '../../global/Color'
+import { Feather } from '@expo/vector-icons'; 
+import DeleteUserModalComponent from './DeleteUserModalComponent';
+import AddPlayerComponent from './AddPlayerComponent';
 
 
-const PlayerItemComponent = ({player, index, addNewPlayer, lastIndex, setName, scoreChange, round}) => {
+const PlayerItemComponent = ({player, index, addNewPlayer, lastIndex, setName, scoreChange, round, deletePlayer}) => {
+
+    const [modalVisible, setModalVisible] = React.useState(false)
+
+    // Helper function for delete player. Adds the index
+    const deletePlayerTemp = () => {
+        deletePlayer(index)
+    }
 
     // Gets the correct container color for even / odd
     const containerStyle = (val) => {
@@ -21,6 +31,7 @@ const PlayerItemComponent = ({player, index, addNewPlayer, lastIndex, setName, s
         }
     }
 
+    // Checks whether the player has already clicked a score
     const isDone = () => {
         if (player.status) {
             return {
@@ -30,8 +41,10 @@ const PlayerItemComponent = ({player, index, addNewPlayer, lastIndex, setName, s
         }
     }
 
+    // Gets the text input / top part of the player component
     const renderTextInput = () => {
         return <View style={[styles.nameContainer, isDone()]}>
+            
                     <TextInput
                     maxLength={12}
                     onSubmitEditing={() => { Keyboard.dismiss() }}
@@ -49,6 +62,7 @@ const PlayerItemComponent = ({player, index, addNewPlayer, lastIndex, setName, s
                 </View>
     }
 
+    // Gets the score part / bottom of the player component
     const renderScoreBox = () => {
         return <View style={styles.box}>
                     <View style={styles.buttonContainer}>
@@ -77,6 +91,7 @@ const PlayerItemComponent = ({player, index, addNewPlayer, lastIndex, setName, s
                 </View>
     }
 
+    // Renders both the text input part and score part together and adds add new player to last one
     const renderComponent = () => {
         if (index !== lastIndex) {
             return <View style={[styles.container, containerStyle(index)]}>
@@ -92,44 +107,39 @@ const PlayerItemComponent = ({player, index, addNewPlayer, lastIndex, setName, s
                     </View>
                     {
                         round === 1
-                        ? <TouchableOpacity onPress={addNewPlayer}>
-                                <View style={styles.addPlayerButtonContainer}>
-                                    <Text style={styles.addPlayerButton}>+ Add player</Text>
-                                </View>
-                          </TouchableOpacity>
+                        ? <AddPlayerComponent addNewPlayer={addNewPlayer} />
                         : null
                     }
-
             </>
         }
     }
 
     return (
-        <>
+        <View>
+            <TouchableOpacity style={styles.iconContainer} onPress={() => { setModalVisible(true) }}>
+                <Feather name="x" style={styles.icon} />
+            </TouchableOpacity>
             {renderComponent()}
-        </>
-        
+            <DeleteUserModalComponent modalVisible={modalVisible} setModalVisible={setModalVisible} name={player.name} deletePlayer={deletePlayerTemp} />
+        </View>
     )
 }
 
 const styles = StyleSheet.create({
-
+    iconContainer: {
+        position: 'absolute',
+        top: 10,
+        right: 10,
+        zIndex: 100
+    },
+    icon: {
+        fontSize: Dimensions.get('window').height * .02,
+        color: Color.plus1,
+    },
     nameContainer: {
         flexDirection: 'row',
         paddingVertical: Dimensions.get('window').height * .04,
         paddingHorizontal: Dimensions.get('window').width * .02,
-    },
-
-    addPlayerButtonContainer: {
-        marginTop: Dimensions.get('window').height * .01,
-        padding:  Dimensions.get('window').height * .03,
-    },
-    addPlayerButton: {
-        color: '#fff',
-        textTransform: 'capitalize',
-        fontSize: Dimensions.get('window').height * .025,
-        textAlign: 'center',
-        fontFamily: 'BalsamiqSans'
     },
     textInput: {
         color: '#fff',

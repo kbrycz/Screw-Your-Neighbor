@@ -1,6 +1,7 @@
 import React from 'react'
 import {View, StyleSheet, Text, TouchableOpacity, Dimensions, SafeAreaView, KeyboardAvoidingView, ScrollView} from 'react-native'
 import * as Color from '../../global/Color'
+import AddPlayerComponent from '../components/AddPlayerComponent'
 import CircleComponent from '../components/CircleComponent'
 import GameHeaderComponent from '../components/GameHeaderComponent'
 import PlayerItemComponent from '../components/PlayerItemComponent'
@@ -17,15 +18,16 @@ class GameScreen extends React.Component {
         }
     }
 
-
     componentDidMount() {
         this.addNewPlayer()
     }
 
+    // Sets the simple modal to be on or off
     setModalVisible = (isVisiible) => {
         this.setState({modalVisible: isVisiible})
     }
 
+    // Adds a new player to the game. First creates an object
     addNewPlayer = () => {
         // get player initial data
         let player = {
@@ -42,12 +44,14 @@ class GameScreen extends React.Component {
         this.setState({players: tempPlayers})
     }
 
+    // Sets the name of the player in the players array
     setName = (text, index) => {
         let tempPlayers = this.state.players
         tempPlayers[index].name = text
         this.setState({players: tempPlayers})
     }
 
+    // Changes the score of a a player. num can be either 1, 10, -1, -10, 0
     scoreChange = (index, num) => {
         let tempPlayers = this.state.players
         if (tempPlayers[index].score + num >= 0) {
@@ -104,7 +108,7 @@ class GameScreen extends React.Component {
             tempPlayers[i].status = false
         }
 
-
+        // Sets state to new values
         this.setState({
             round: this.state.round + 1,
             players: tempPlayers
@@ -116,7 +120,14 @@ class GameScreen extends React.Component {
         this.props.navigation.navigate('History', {params: {players: this.state.players}, screen: 'HistoryScreen'})
     }
 
-
+    // Delete player from the game
+    deletePlayer = (index) => {
+        let tempPlayers = this.state.players
+        if (index > -1) {
+            tempPlayers.splice(index, 1);
+        }
+        this.setState({players: tempPlayers})
+    }
 
     render() {
         return (
@@ -126,10 +137,14 @@ class GameScreen extends React.Component {
                     <GameHeaderComponent quit={this.quit} restart={this.restart} round={this.state.round} next={this.next} goToHistory={this.goToHistory} />
                     <KeyboardAvoidingView  behavior="padding" enabled keyboardVerticalOffset={20} style={{height: Dimensions.get('window').height}}>
                     <ScrollView>
-                        {this.state.players.map((player, index) => {
-                            return <PlayerItemComponent key={index} player={player} index={index} lastIndex={this.state.players.length - 1} round={this.state.round}
-                                addNewPlayer={this.addNewPlayer} setName={this.setName} scoreChange={this.scoreChange}/>
-                        })}
+                        {
+                            this.state.players.length > 0
+                            ? this.state.players.map((player, index) => {
+                                return <PlayerItemComponent key={index} player={player} index={index} lastIndex={this.state.players.length - 1} round={this.state.round}
+                                    addNewPlayer={this.addNewPlayer} setName={this.setName} scoreChange={this.scoreChange} deletePlayer={this.deletePlayer}/>
+                            })
+                            : <AddPlayerComponent addNewPlayer={this.addNewPlayer} />
+                        }
                     </ScrollView>
                     </KeyboardAvoidingView>
                     <SimpleModalComponent modalVisible={this.state.modalVisible} 

@@ -71,8 +71,8 @@ const styles = StyleSheet.create({
   },
   modalText: {
     textAlign: 'center',
-    color: Color.TEXT,
-    fontSize: Dimensions.get('window').height * .027,
+    color: "#444",
+    fontSize: Dimensions.get('window').height * .024,
     lineHeight: Dimensions.get('window').height * .045,
     marginBottom: Dimensions.get('window').height * .015,
     fontFamily: 'BalsamiqSans'

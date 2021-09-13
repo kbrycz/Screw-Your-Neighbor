@@ -14,14 +14,11 @@ class HistoryPlayerScreen extends React.Component {
         }
     }
 
-
     componentDidMount() {
         this.setState({
             player: this.props.route.params.player
         })
     }
-
-
 
     render() {
         return (
@@ -50,10 +47,8 @@ class HistoryPlayerScreen extends React.Component {
                     style={styles.list} />
                 </SafeAreaView>
             </View>
-            
         )
     }
-    
 }
 
 const styles = StyleSheet.create({
@@ -77,7 +72,6 @@ const styles = StyleSheet.create({
     titleContainer2: {
         flex: 2,
     },
-
     title: {
         paddingTop: Dimensions.get('window').height * .02,
         paddingBottom: Dimensions.get('window').height * .02,

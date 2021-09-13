@@ -41,8 +41,6 @@ const HistoryPlayerScoreComponent = ({score, round, prev, index}) => {
                 <Text style={styles.score} >{score}</Text>
             </View>        
             }
-            
-            
         </View>
     )
 }

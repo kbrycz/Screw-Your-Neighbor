@@ -1,8 +1,11 @@
 *****************TODO******************
-- Be able to remove player
+- Style up the whole project
 
 *****************LATER******************
 
+- Fix splash screen
+- Fix app icon
+- updated share icon and stuff
 
 *****************REACH******************
 - Be able to edit history with a button

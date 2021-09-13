@@ -11,9 +11,6 @@ class HowToScreen extends React.Component {
         }
     }
 
-    componentDidMount() {
-    }
-
     render() {
         return (
             <View>
@@ -25,13 +22,16 @@ class HowToScreen extends React.Component {
                                        Flip over a card from the remaining pile. This card will be the trump card!</Text>
                 <Text style={styles.p}>Much like Euchre, the trump suit will be the most powerful suit throughout the round. 
                                        For example, if the trump card is the "8 of Diamonds", Diamonds is the trump suit! The 8 is not important to you!</Text>
+                <Text style={styles.p}>In this game, the Jack of the trump suit will be the strongest card, and the Jack of the same color will be the second highest! 
+                                       So if Diamonds is trump, the Jack of Diamonds is the strongest card, and the Jack of Hearts is the second highest. 
+                                       The rest of the cards are in the normal order 2-Ace.</Text>
                 <Text style={styles.p}>The object of the game is to predict how many "tricks" you will win with your given hand. You win a trick by 
                                        1. Having the highest trump suited card or 2. If there are no trump cards on the table, having the highest card that matches the lead suit.</Text>
                 <Text style={styles.p}>The player to the left of the dealer plays the first card. This is the lead card as mentioned above. 
                                        Every other player MUST match the suit of the lead card if they have it. 
                                        If they don't, they may play any random card.</Text>
                 <Text style={styles.p}>If you want to win the trick, you want to play the trump suit in this situation as long as there aren't any higher trump cards on the table. 
-                                       If you don't have the trump suit, or another card is higher, play one of the other two suits. That card will be useless and you will lose the trick </Text>
+                                       If you don't have the trump suit, or another card is higher, play one of the other two suits. That card will be useless and you will lose the trick.</Text>
                 <Text style={styles.p}>Remember, you want to win as many tricks as you had called at the beginning of the round. If you said you'd win 2 tricks, 
                                        you have to be strategic in which ones you choose to win!</Text>
                 <Text style={styles.p}>If you guess all your tricks right, you get as many points as tricks you got right, plus 10 extra for being right! 
@@ -41,7 +41,6 @@ class HowToScreen extends React.Component {
                 </ScrollView>
                 
             </View>
-            
         )
     }
     

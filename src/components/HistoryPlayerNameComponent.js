@@ -28,7 +28,6 @@ const HistoryPlayerNameComponent = ({player, index, navigation}) => {
                 ? <Text style={styles.name}>Player {index + 1}</Text>
                 : <Text style={styles.name}>{player.name}</Text>
             }
-            
             <AntDesign name="right" style={styles.icon} />
         </TouchableOpacity>
 

@@ -15,10 +15,8 @@ class HomeScreen extends React.Component {
         }
     }
 
-    componentDidMount() {
-    }
-
     // Lets users share the app with other people
+    // TODO need to update this to new link
     shareButton = async () => {
         try {
             const result = await Share.share({
@@ -34,10 +32,12 @@ class HomeScreen extends React.Component {
     }
 
     // Sends the user to the app store to rate the app
+    // TODO need to update this to new link
     rateApp = () => {
         Linking.openURL('https://apps.apple.com/us/app/celsius-safe-crypto-platform/id1387885523');
     }
 
+    // Sets the status of simple modal
     setModalVisible = (isVisible) => {
         this.setState({modalVisible: isVisible})
     }
@@ -46,7 +46,6 @@ class HomeScreen extends React.Component {
         return (
             <View style={styles.background}>
                 <CircleComponent isWhite={false} />
-
                 <Text style={styles.headerText}>Screw Your Neighbor</Text>
                 <View style={styles.imageContainer}>
                     <Image

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StyleSheet, Text, Image, Dimensions, TouchableOpacity } from 'react-native'
+import { StyleSheet, View, ActivityIndicator, Dimensions } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from './src/screens/HomeScreen'
@@ -10,6 +10,7 @@ import HistoryPlayerScreen from './src/screens/HistoryPlayerScreen'
 import * as Font from 'expo-font';
 import { Asset } from 'expo-asset';
 import HowToScreen from './src/screens/HowToScreen';
+import * as Color from './global/Color'
 
 
 // Creates stack for the Home screens
@@ -103,7 +104,14 @@ class App extends React.Component {
   render() {
     // TODO should be a loading screen
     if (this.state.loading) {
-      return <Text>Loading</Text>
+      return <View style={styles.background}>
+                <ActivityIndicator
+                    style={styles.activityIndicator}
+                    animating={this.state.loading}
+                    size="large"
+                    color={'#fff'}
+                />
+             </View>
     } 
    else  {
       return( 
@@ -122,7 +130,17 @@ class App extends React.Component {
 }
 
 const styles = StyleSheet.create({
-
+    background: {
+      backgroundColor: Color.MAIN,
+      height: Dimensions.get('window').height
+  },
+  activityIndicator: {
+      position: 'absolute',
+      left: 0,
+      right: 0,
+      top: 0,
+      bottom: 0,
+  }
 })
 
 export default function(props) {
