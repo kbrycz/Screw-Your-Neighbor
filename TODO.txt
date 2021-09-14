@@ -1,15 +1,8 @@
 *****************TODO******************
-- Style up the whole project
-
+- Update the ad stuff to not show
 *****************LATER******************
 
-- Fix splash screen
-- Fix app icon
-- updated share icon and stuff
-
 *****************REACH******************
-- Be able to edit history with a button
-- Make the text input shrink as text grows
 
 
 
