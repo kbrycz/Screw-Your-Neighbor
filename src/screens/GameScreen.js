@@ -129,8 +129,8 @@ class GameScreen extends React.Component {
 
     // Displays the full screen ad
     displayAd = async () => {
-        // Display an interstitial (Change to ca-app-pub-1470582515457694/1731364666 for prod)
-        await AdMobInterstitial.setAdUnitID('ca-app-pub-3940256099942544/4411468910'); // Test ID, Replace with your-admob-unit-id
+        // Display an interstitial (Change to ca-app-pub-3940256099942544/4411468910 for test)
+        await AdMobInterstitial.setAdUnitID('ca-app-pub-1470582515457694/9773861432');
         await AdMobInterstitial.requestAdAsync({ servePersonalizedAds: true});
         await AdMobInterstitial.showAdAsync();
     }
